@@ -822,6 +822,35 @@
 			}
 		}
 	}
+//=================================================================================================================
+	// Ability: Charge Resource Passive
+	//=================================================================================================================
+	"lina_charge" 
+	{
+		"BaseClass" "ability_datadriven"
+		"AbilityTextureName"    "barbarian_rage"
+		"MaxLevel" "1"
+		"AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+
+		"Modifiers"
+		{ 
+			"charge_modifier"
+			{
+				"Passive"   "1" //Auto apply this modifier when the spell is learned
+				"IsBuff"    "1" //Display as a green modifier
+				"IsHidden"  "0" //Show in the UI
+
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"    "lina.lua"
+						"Function"  "ZeroManaOnSpawn"
+					}
+				}
+			}
+		}
+	}
 	
 	//=================================================================================================================
 	// Ability: Lina Dragon Slave Lua
@@ -847,12 +876,12 @@
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"8.5"
+		"AbilityCooldown"				"2.0"
 		"AbilityDuration"				"0.6875 0.6875 0.6875 0.6875"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"100 115 130 145"
+		"AbilityManaCost"				"0"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------

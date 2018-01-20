@@ -53,7 +53,7 @@ function lina_dragon_slave_lua:OnProjectileHit( hTarget, vLocation )
 			ability = self
 		}
 
-		ApplyDamage( damage )
+		self:GetCaster():GiveMana(self:GetCaster():GetMaxMana()/5)
 
 		local vDirection = vLocation - self:GetCaster():GetOrigin()
 		vDirection.z = 0.0

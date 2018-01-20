@@ -61,5 +61,13 @@
 		"Ability2"				"lina_light_strike_array_lua"					// Ability 2
 		"Ability3"				"lina_fiery_soul_lua"					// Ability 3
 		"Ability4"				"lina_laguna_blade_lua"						// Ability 4
+		"AttributeBaseStrength"		"0"			// Base strength
+		"AttributeStrengthGain"		"0"			// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"			// Base intelligence
+		"AttributeIntelligenceGain"	"0"			// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"			// Base agility
+		"AttributeAgilityGain" "0" // Agility bonus per level.
+		"StatusMana"				"50"
+		"StatusManaRegen"			"0"
 	}
 }
