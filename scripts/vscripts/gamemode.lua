@@ -129,6 +129,7 @@ end
 ]]
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
+  SendToConsole("dota_creeps_no_spawning 1")    
 
   Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
     function()
