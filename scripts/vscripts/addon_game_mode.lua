@@ -42,9 +42,14 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_dota_hero_enigma", context)
 end
 
+function TextListener(eventInfo)
+  say(eventInfo.text)
+end
+
 -- Create the game mode when we activate
 function Activate()
 	print("[BAREBONES] Performing activate")
   GameRules.GameMode = GameMode()
   GameRules.GameMode:_InitGameMode()
+  ListenToGameEvent("player_chat", TextListener, nil)
 end
