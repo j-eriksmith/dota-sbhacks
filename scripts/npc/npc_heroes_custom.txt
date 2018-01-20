@@ -67,7 +67,7 @@
 		"AttributeIntelligenceGain"	"0"			// Intelligence bonus per level.
 		"AttributeBaseAgility"		"0"			// Base agility
 		"AttributeAgilityGain" "0" // Agility bonus per level.
-		"StatusMana"				"50"
+		"StatusMana"				"100"
 		"StatusManaRegen"			"0"
 	}
 }
