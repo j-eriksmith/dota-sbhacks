@@ -49,7 +49,7 @@ function Activate()
 	print("[BAREBONES] Performing activate")
   GameRules.GameMode = GameMode()
   GameRules.GameMode:_InitGameMode()
-  ListenToGameEvent("player_chat", ChatListened, nil)
+--   ListenToGameEvent("player_chat", ChatListened, nil)
   --print("activate")
 end
 
