@@ -24,6 +24,7 @@ spellbreak_challenges = {
 }
 
 MAX_SPELLBREAK = 2
+scores = {}
 
 prompt = "Enter the following phrase in chat exactly:"
 spellbreaker_prompt = "Enter the words in chat! (%d of %d)"
@@ -134,7 +135,9 @@ function check(correct_str)
 	if input == correct_str then --Ritualist win
 		Notifications:Bottom(ritual_caster:GetPlayerOwner(), {text=correct_ritualist, duration=3, style={color="white", ["font-size"]="80px"}})
 		if spellbreaker then Notifications:Bottom(spellbreaker:GetPlayerOwner(), {text=correct_breaker, duration=3, style={color="white", ["font-size"]="80px"}})	end	
-		--and whatever else needs to happen for scorekeeping
+
+		scores[ritual_caster] = scores[ritual_caster] + 1
+		if scores[ritual_caster] >= 3 then GameRules:SetGameWiner(ritual_caster:GetTeam()) end
 	else --Ritualist made an error = ritualist lose
 		Notifications:Bottom(ritual_caster:GetPlayerOwner(), {text=incorrect_ritualist, duration=3, style={color="white", ["font-size"]="80px"}})
 		if spellbreaker then Notifications:Bottom(spellbreaker:GetPlayerOwner(), {text=incorrect_breaker, duration=3, style={color="white", ["font-size"]="80px"}}) end
