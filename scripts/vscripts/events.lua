@@ -169,7 +169,6 @@ function GameMode:OnRuneActivated (keys)
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local rune = keys.rune
-
   --[[ Rune Can be one of the following types
   DOTA_RUNE_DOUBLEDAMAGE
   DOTA_RUNE_HASTE

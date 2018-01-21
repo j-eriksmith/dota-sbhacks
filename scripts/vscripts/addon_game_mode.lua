@@ -44,6 +44,9 @@ end
 
 require ( "process_chat" )
 
+-- Spawn runes 
+SendToConsole("")
+
 -- Create the game mode when we activate
 function Activate()
 	print("[BAREBONES] Performing activate")
