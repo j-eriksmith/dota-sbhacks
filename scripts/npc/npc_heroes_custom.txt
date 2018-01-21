@@ -68,8 +68,9 @@
 		"AttributeBaseAgility"		"0"			// Base agility
 		"AttributeAgilityGain" "0" // Agility bonus per level.
 		"StatusHealth"				"20000"		// Cho'Gath
-		"StatusHealthRegen"			"700"		// not vel'koz
+		"StatusHealthRegen"			"700"		// Mundo
 		"AttackRate"				"0.2"		// Kog'Maw
+		"MaxAttackDamage"			"0"			// Soraka
 		"StatusMana"				"100"
 		"StatusManaRegen"			"0"
 	}
