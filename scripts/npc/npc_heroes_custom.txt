@@ -67,12 +67,13 @@
 		"AttributeIntelligenceGain"	"0"			// Intelligence bonus per level.
 		"AttributeBaseAgility"		"0"			// Base agility
 		"AttributeAgilityGain" "0" // Agility bonus per level.
-		"StatusHealth"				"20000"		// Cho'Gath
-		"StatusHealthRegen"			"700"		// Mundo
-		"AttackRate"				"0.2"		// Kog'Maw
+		"StatusHealth"				"10000"		// Cho'Gath
+		"StatusHealthRegen"			"210"		// Mundo
+		"AttackRate"				"2"			// Not Kog'Maw
+		"AttackDamageMin"			"0"			// Soraka
 		"AttackDamageMax"			"0"			// Soraka
 		"StatusMana"				"100"
 		"StatusManaRegen"			"0"
-		"ProjectileSpeed"			"2700"
+		"ProjectileSpeed"			"2400"
 	}
 }

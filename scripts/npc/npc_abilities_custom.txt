@@ -1027,8 +1027,8 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDuration"				"2 2.5 2.5"
-		"AbilityCooldown"				"13 12 11"
+		"AbilityDuration"				"2"
+		"AbilityCooldown"				"10 9.5 9"
 		"AbilityManaCost"				"0 0 0"
 		"MaxLevel"						"3"
 		
@@ -1039,12 +1039,12 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"fiery_soul_attack_speed_bonus"	"0 0 0"
+				"fiery_soul_attack_speed_bonus"	"0"
 			}
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"fiery_soul_move_speed_bonus"	"30 35 42"
+				"fiery_soul_move_speed_bonus"	"50 55 65"
 			}
 			"03"
 			{
@@ -1054,7 +1054,7 @@
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"duration_tooltip"			"2 2.5 2.5"
+				"duration_tooltip"			"2"
 			}
 		}
 	}

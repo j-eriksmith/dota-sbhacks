@@ -82,9 +82,9 @@ function modifier_lina_fiery_soul_lua:OnAbilityExecuted( params )
 				return 0
 			end
 
-			local hAbility = params.ability 
+			local hAbility = params.ability
 			if hAbility ~= nil and ( not hAbility:IsItem() ) and ( not hAbility:IsToggle() ) then
-				if self:GetStackCount() < self.fiery_soul_max_stacks then
+				if self:GetStackCount() < self.fiery_soul_max_stacks and hAbility:GetBehavior() == 2052 then
 					self:IncrementStackCount()
 				else
 					self:SetStackCount( self:GetStackCount() )
