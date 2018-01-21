@@ -22,10 +22,10 @@ function addTree()
 	rand = math.random(1, 17)
 	print(coords[rand][1])
 	print(coords[rand][2])
-	vec = {}
-	vec[1] = coords[rand][1]
-	vec[2] = coords[rand][2]
-	print("tree added?")
-	CreateTempTree(Vector(coords[rand][1], coords[rand][2], 0), 100000)
+	pos = Vector(coords[rand][1], coords[rand][2], 0)
+	local item = CreateItem("item_charge_orb_datadriven", nil, nil)
+	local drop = CreateItemOnPositionSync(pos, item)
+	local pos_launch = pos+RandomVector(RandomFloat(150,200))
+	item:LaunchLoot(true, 200, 0.75, pos_launch)
 end
 

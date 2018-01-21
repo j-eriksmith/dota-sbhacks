@@ -135,11 +135,11 @@ function GameMode:OnGameInProgress()
   SendToConsole("dota_creeps_no_spawning 1")    
   Notifications:Bottom(PlayerResource:GetPlayer(0), {text="I accommodated the embarrassing pharaoh", duration=10, style={color="red", ["font-size"]="80px"}})
   
-  Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
+  Timers:CreateTimer(15, -- Start this timer 30 game-time seconds later
     function()
       --DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
       addTree();
-      return 2.0 -- Rerun this timer every 30 game-time seconds 
+      return 10.0 -- Rerun this timer every 30 game-time seconds 
     end)
 end
 

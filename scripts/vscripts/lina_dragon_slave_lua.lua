@@ -44,15 +44,7 @@ end
 --------------------------------------------------------------------------------
 
 function lina_dragon_slave_lua:OnProjectileHit( hTarget, vLocation )
-	if hTarget ~= nil and ( not hTarget:IsMagicImmune() ) and ( not hTarget:IsInvulnerable() ) then
-		local damage = {
-			victim = hTarget,
-			attacker = self:GetCaster(),
-			damage = self.dragon_slave_damage,
-			damage_type = DAMAGE_TYPE_MAGICAL,
-			ability = self
-		}
-
+	if hTarget ~= nil then
 		self:GetCaster():GiveMana(self:GetCaster():GetMaxMana()/5)
 
 		local vDirection = vLocation - self:GetCaster():GetOrigin()
@@ -61,8 +53,9 @@ function lina_dragon_slave_lua:OnProjectileHit( hTarget, vLocation )
 		
 		local nFXIndex = ParticleManager:CreateParticle( "particles/units/heroes/hero_lina/lina_spell_dragon_slave_impact.vpcf", PATTACH_ABSORIGIN_FOLLOW, hTarget )
 		ParticleManager:SetParticleControlForward( nFXIndex, 1, vDirection )
-		ParticleManager:ReleaseParticleIndex( nFXIndex )
+		ParticleManager:ReleaseParticleIndex( nFXIndex )		
 	end
+
 
 	return false
 end
