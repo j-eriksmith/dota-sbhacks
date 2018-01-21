@@ -54,7 +54,6 @@ function Activate()
   GameRules.GameMode:_InitGameMode()
   --ListenToGameEvent("player_chat", ChatListened, nil)
   --print("activate")
-  test(0)
 end
 
 --print("bottom")
