@@ -34,7 +34,7 @@ function lina_laguna_blade_lua:OnSpellStart()
 end
 
 function lina_laguna_blade_lua:OnChannelFinish(bInterrupted)
-	if not bInterrupted then check("") end
+	if not bInterrupted then check("pizzapie") end
 end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
