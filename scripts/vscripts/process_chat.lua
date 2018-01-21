@@ -46,6 +46,15 @@ ritual_caster = nil
 spellbreaker = nil
 listening = false --Process chat is listening for chat responses
 
+function contains(table, element)
+  for k, v in pairs(table) do
+    if k == element then
+      return true
+    end
+  end
+  return false
+end
+
 function resetChatVars()
 	input = ""
 	spellbreaker_input = ""
@@ -89,7 +98,7 @@ end
 function test(hCaster)
 	clear()
 	ritual_caster = hCaster
-	scores[ritual_caster] = 0
+	if not contains(scores, ritual_caster) then scores[ritual_caster] = 0 end
 	listening = true
 	print("test")
 	rand = math.random(1, table.getn(challenges))
@@ -138,7 +147,8 @@ function check(correct_str)
 		if spellbreaker then Notifications:Bottom(spellbreaker:GetPlayerOwner(), {text=correct_breaker, duration=3, style={color="white", ["font-size"]="80px"}})	end	
 
 		scores[ritual_caster] = scores[ritual_caster] + 1
-		if scores[ritual_caster] >= 3 then GameRules:SetGameWiner(ritual_caster:GetTeam()) end
+		print(scores[ritual_caster])
+		if scores[ritual_caster] >= 3 then GameRules:SetGameWinner(ritual_caster:GetTeam()) end
 	else --Ritualist made an error = ritualist lose
 		Notifications:Bottom(ritual_caster:GetPlayerOwner(), {text=incorrect_ritualist, duration=3, style={color="white", ["font-size"]="80px"}})
 		if spellbreaker then Notifications:Bottom(spellbreaker:GetPlayerOwner(), {text=incorrect_breaker, duration=3, style={color="white", ["font-size"]="80px"}}) end
