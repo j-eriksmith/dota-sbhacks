@@ -34,7 +34,7 @@ function lina_dragon_slave_lua:OnSpellStart()
 		fDistance = self.dragon_slave_distance,
 		Source = self:GetCaster(),
 		iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
-		iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC,
+		iUnitTargetType = DOTA_UNIT_TARGET_HERO,
 	}
 
 	ProjectileManager:CreateLinearProjectile( info )
