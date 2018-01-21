@@ -23,7 +23,7 @@ spellbreak_challenges = {
 	"daiquiri", "drunkenness", "dumbbell"
 }
 
-MAX_SPELLBREAK = 3
+MAX_SPELLBREAK = 2
 
 prompt = "Enter the following phrase in chat exactly:"
 spellbreaker_prompt = "Enter the words in chat! (%d of %d)"
@@ -52,6 +52,7 @@ function resetChatVars()
 	spellbreaker_phrase = ""
 	ritual_caster = nil
 	spellbreaker = nil
+	current = 1
 end
 
 function clear()
@@ -73,14 +74,18 @@ function ChatListened (eventInfo)
 			check(phrase)
 	else --Todo: change this back to double conditional
 			print("SpellbreakerChatListened")
-			spellbreaker_input = eventInfo.text
-			if spellbreaker_phrase == spellbreaker_input then
-				current = current + 1
-				generate_spellbreak()
-			else --Spellbreaker fails, but ritual can still be completed
-				clearFor(spellbreaker:GetPlayerOwnerID())
-				Notifications:Bottom(spellbreaker:GetPlayerOwner(), {text=incorrect_spellbreak, duration=3, style={color="white", ["font-size"]="80px"}})
-			end
+			Timers:CreateTimer(.5, function()
+				spellbreaker_input = eventInfo.text
+				print(spellbreaker_phrase, spellbreaker_input)
+				if spellbreaker_phrase == spellbreaker_input then
+					current = current + 1
+					generate_spellbreak()
+				else --Spellbreaker fails, but ritual can still be completed
+					spellbreaker:Interrupt()
+					clearFor(spellbreaker:GetPlayerOwnerID())
+					Notifications:Bottom(spellbreaker:GetPlayerOwner(), {text=incorrect_spellbreak, duration=3, style={color="white", ["font-size"]="80px"}})
+				end
+			end)
 	end
 end
 
@@ -109,9 +114,8 @@ function generate_spellbreak() --Generates a new word for the spellbreaker to sp
 	if current <= MAX_SPELLBREAK then
 		challengeIndex = math.random(1, table.getn(spellbreak_challenges))
 		spellbreaker_phrase = spellbreak_challenges[challengeIndex]
-		print(challengeIndex, spellbreaker_phrase)
-			Notifications:Top(spellbreaker:GetPlayerOwner(), {text=string.format(spellbreaker_prompt, current, MAX_SPELLBREAK), duration=10, style={color="white", ["font-size"]="50px"}})
-			Notifications:Bottom(spellbreaker:GetPlayerOwner(), {text=spellbreaker_phrase, duration=10, style={color="white", ["font-size"]="80px"}})
+		Notifications:Top(spellbreaker:GetPlayerOwner(), {text=string.format(spellbreaker_prompt, current, MAX_SPELLBREAK), duration=10, style={color="white", ["font-size"]="50px"}})
+		Notifications:Bottom(spellbreaker:GetPlayerOwner(), {text=spellbreaker_phrase, duration=10, style={color="white", ["font-size"]="80px"}})
 	else
 		spellbreakWin()
 	end
