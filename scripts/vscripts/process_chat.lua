@@ -23,7 +23,7 @@ spellbreak_challenges = {
 	"daiquiri", "drunkenness", "dumbbell"
 }
 
-MAX_SPELLBREAK = 5
+MAX_SPELLBREAK = 2
 
 prompt = "Enter the following phrase in chat exactly:"
 spellbreaker_prompt = "Enter the words in chat! (%d of %d)"
@@ -43,7 +43,7 @@ incorrect_spellbreak = "Spellbreak failed!"
 
 ritual_caster = nil
 spellbreaker = nil
-listening = true --Process chat is listening for chat responses
+listening = false --Process chat is listening for chat responses
 
 function resetChatVars()
 	input = ""
@@ -52,6 +52,7 @@ function resetChatVars()
 	spellbreaker_phrase = ""
 	ritual_caster = nil
 	spellbreaker = nil
+	current = 1
 end
 
 function clear()
@@ -64,19 +65,20 @@ function clearFor(iPlayerID)
 	Notifications:ClearBottom(iPlayerID)
 end
 
-
 function ChatListened (eventInfo)
 	if listening and eventInfo.playerid == ritual_caster:GetPlayerOwnerID() then
 			print("RitualChatListened")
 			input = eventInfo.text
 			check(phrase)
-	elseif listening and eventInfo.playerid == spellbreaker:GetPlayerOwnerID() then
+	elseif listening and spellbreaker and eventInfo.playerid == spellbreaker:GetPlayerOwnerID() then
 			print("SpellbreakerChatListened")
 			spellbreaker_input = eventInfo.text
+			print(spellbreaker_phrase, spellbreaker_input)
 			if spellbreaker_phrase == spellbreaker_input then
 				current = current + 1
 				generate_spellbreak()
-			else --Spellbreaker fails, ritual can still be completed
+			else --Spellbreaker fails, but ritual can still be completed
+				spellbreaker:Interrupt()
 				clearFor(spellbreaker:GetPlayerOwnerID())
 				Notifications:Bottom(spellbreaker:GetPlayerOwner(), {text=incorrect_spellbreak, duration=3, style={color="white", ["font-size"]="80px"}})
 			end
@@ -88,17 +90,16 @@ function test(hCaster)
 	ritual_caster = hCaster
 	listening = true
 	print("test")
-	rand = math.random(1, 5)
+	rand = math.random(1, table.getn(challenges))
 	phrase = challenges[rand]
 	print(phrase)
 	Notifications:Top(ritual_caster:GetPlayerOwner(), {text=prompt, duration=10, style={color="white", ["font-size"]="50px"}})
 	Notifications:Bottom(ritual_caster:GetPlayerOwner(), {text=phrase, duration=10, style={color="white", ["font-size"]="80px"}})
-	ListenToGameEvent("player_chat", ChatListened, nil)
 end
 
-function spellbreak(hCaster) --Spellbreaker starts his channel
+function spellbreak(hCaster) --Spellbreaker registered and starts his channel
 	spellbreaker = hCaster
-	current = 0
+	current = 1
 	generate_spellbreak()
 end
 	
@@ -107,8 +108,8 @@ function generate_spellbreak() --Generates a new word for the spellbreaker to sp
 	if current <= MAX_SPELLBREAK then
 		challengeIndex = math.random(1, table.getn(spellbreak_challenges))
 		spellbreaker_phrase = spellbreak_challenges[challengeIndex]
-			Notifications:Top(spellbreaker:GetPlayerOwner(), {text=string.format(spellbreaker_prompt, current, max), duration=10, style={color="white", ["font-size"]="50px"}})
-			Notifications:Bottom(spellbreaker:GetPlayerOwner(), {text=phrase, duration=10, style={color="white", ["font-size"]="80px"}})
+		Notifications:Top(spellbreaker:GetPlayerOwner(), {text=string.format(spellbreaker_prompt, current, MAX_SPELLBREAK), duration=10, style={color="white", ["font-size"]="50px"}})
+		Notifications:Bottom(spellbreaker:GetPlayerOwner(), {text=spellbreaker_phrase, duration=10, style={color="white", ["font-size"]="80px"}})
 	else
 		spellbreakWin()
 	end
@@ -118,9 +119,9 @@ function spellbreakWin() --Spellbreaker win
 	listening = false
 	clear()
 	ritual_caster:Interrupt()
-	spellbeaker:Interrupt()
+	spellbreaker:Interrupt()
 	Notifications:Bottom(ritual_caster:GetPlayerOwner(), {text=spellbreaker_win_ritualist, duration=3, style={color="white", ["font-size"]="80px"}})	
-	Notifications:Bottom(spellbeaker:GetPlayerOwner(), {text=spellbreaker_win_breaker, duration=3, style={color="white", ["font-size"]="80px"}})	
+	Notifications:Bottom(spellbreaker:GetPlayerOwner(), {text=spellbreaker_win_breaker, duration=3, style={color="white", ["font-size"]="80px"}})	
 	resetChatVars()
 end
 	
@@ -129,14 +130,14 @@ function check(correct_str)
 	listening = false
 	clear()
 	ritual_caster:Interrupt()
-	spellbeaker:Interrupt()
+	if spellbreaker then spellbreaker:Interrupt() end
 	if input == correct_str then --Ritualist win
 		Notifications:Bottom(ritual_caster:GetPlayerOwner(), {text=correct_ritualist, duration=3, style={color="white", ["font-size"]="80px"}})
-		Notifications:Bottom(spellbeaker:GetPlayerOwner(), {text=correct_breaker, duration=3, style={color="white", ["font-size"]="80px"}})		
+		if spellbreaker then Notifications:Bottom(spellbreaker:GetPlayerOwner(), {text=correct_breaker, duration=3, style={color="white", ["font-size"]="80px"}})	end	
 		--and whatever else needs to happen for scorekeeping
 	else --Ritualist made an error = ritualist lose
 		Notifications:Bottom(ritual_caster:GetPlayerOwner(), {text=incorrect_ritualist, duration=3, style={color="white", ["font-size"]="80px"}})
-		Notifications:Bottom(ritual_caster:GetPlayerOwner(), {text=incorrect_breaker, duration=3, style={color="white", ["font-size"]="80px"}})		
+		if spellbreaker then Notifications:Bottom(spellbreaker:GetPlayerOwner(), {text=incorrect_breaker, duration=3, style={color="white", ["font-size"]="80px"}}) end
 	end
 	resetChatVars()
 end

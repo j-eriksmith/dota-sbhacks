@@ -20,8 +20,6 @@ coords = {
 
 function spawnOrb()
 	rand = math.random(1, 17)
-	print(coords[rand][1])
-	print(coords[rand][2])
 	pos = Vector(coords[rand][1], coords[rand][2], 0)
 	local item = CreateItem("item_charge_orb_datadriven", nil, nil)
 	local drop = CreateItemOnPositionSync(pos, item)

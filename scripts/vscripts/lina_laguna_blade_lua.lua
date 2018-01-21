@@ -26,7 +26,6 @@ function lina_laguna_blade_lua:OnSpellStart()
 	if hTarget ~= nil then
 		EmitSoundOn( "Ability.LagunaBladeImpact", hTarget )
 		if not listening then test(self:GetCaster()) else spellbreak(self:GetCaster()) end
-				
 		local nFXIndex = ParticleManager:CreateParticle( "particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf", PATTACH_CUSTOMORIGIN, nil );
 		ParticleManager:SetParticleControlEnt( nFXIndex, 0, self:GetCaster(), PATTACH_POINT_FOLLOW, "attach_attack1", self:GetCaster():GetOrigin() + Vector( 0, 0, 96 ), true );
 		ParticleManager:SetParticleControlEnt( nFXIndex, 1, hTarget, PATTACH_POINT_FOLLOW, "attach_hitloc", hTarget:GetOrigin(), true );
@@ -35,7 +34,7 @@ function lina_laguna_blade_lua:OnSpellStart()
 end
 
 function lina_laguna_blade_lua:OnChannelFinish(bInterrupted)
-	check("")
+	if not bInterrupted then check("") end
 end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
