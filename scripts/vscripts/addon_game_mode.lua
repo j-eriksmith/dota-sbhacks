@@ -43,7 +43,6 @@ function Precache( context )
 end
 
 require ( "process_chat" )
-require ( "add_trees" )
 
 -- Spawn runes 
 SendToConsole("")

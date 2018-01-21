@@ -127,13 +127,16 @@ end
   gold will begin to go up in ticks if configured, creeps will spawn, towers will become damageable etc.  This function
   is useful for starting any game logic timers/thinkers, beginning the first round, etc.
 ]]
+
+require ( "add_trees" )
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
 
   Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
     function()
-      DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
-      return 30.0 -- Rerun this timer every 30 game-time seconds 
+      --DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
+      addTree();
+      return 2.0 -- Rerun this timer every 30 game-time seconds 
     end)
 end
 
