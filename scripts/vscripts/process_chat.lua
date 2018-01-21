@@ -89,6 +89,7 @@ end
 function test(hCaster)
 	clear()
 	ritual_caster = hCaster
+	scores[ritual_caster] = 0
 	listening = true
 	print("test")
 	rand = math.random(1, table.getn(challenges))
