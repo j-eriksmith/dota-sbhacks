@@ -70,8 +70,9 @@
 		"StatusHealth"				"20000"		// Cho'Gath
 		"StatusHealthRegen"			"700"		// Mundo
 		"AttackRate"				"0.2"		// Kog'Maw
-		"MaxAttackDamage"			"0"			// Soraka
+		"AttackDamageMax"			"0"			// Soraka
 		"StatusMana"				"100"
 		"StatusManaRegen"			"0"
+		"ProjectileSpeed"			"2700"
 	}
 }
