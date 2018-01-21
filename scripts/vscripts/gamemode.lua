@@ -99,6 +99,7 @@ end
 ]]
 function GameMode:OnHeroInGame(hero)
   DebugPrint("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
+  test(0)
 
   local heroName = hero:GetUnitName()
   if heroName == "npc_dota_hero_lina" then
@@ -130,15 +131,15 @@ end
 ]]
 
 require ( "add_trees" )
+require ( "process_chat" )
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
   SendToConsole("dota_creeps_no_spawning 1")    
-  Notifications:Bottom(PlayerResource:GetPlayer(0), {text="I accommodated the embarrassing pharaoh", duration=10, style={color="red", ["font-size"]="80px"}})
   
   Timers:CreateTimer(15, -- Start this timer 30 game-time seconds later
     function()
       --DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
-      addTree();
+      --addTree();
       return 10.0 -- Rerun this timer every 30 game-time seconds 
     end)
 end
