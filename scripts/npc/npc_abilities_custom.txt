@@ -1097,9 +1097,8 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_NONE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BUILDING"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"							// Changes dynamically with scepter	
@@ -1107,6 +1106,7 @@
 		"BaseClass"						"ability_lua"
 		"AbilityTextureName"			"lina_laguna_blade_lua"
 		"ScriptFile"					"lina_laguna_blade_lua"
+		"AbilityCastAnimation"			"ACT_DOTA_IDLE"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -1123,16 +1123,16 @@
 			
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityModifierSupportValue"	"0.0"	// Modifier just delays damage
+		"AbilityChannelTime" 			"10.0 10.0 10.0 10.0"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
+		"OnChannelSucceeded"
 		{
-			"01"
+			"RunScript"
 			{
-				"var_type"					"FIELD_FLOAT"
-				"damage_delay"				"0.25"
+				"ScriptFile" "process_chat.lua"
+				"Function"   "channelFinished"
 			}
 		}
 	}

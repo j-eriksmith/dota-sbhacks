@@ -53,7 +53,7 @@ function lina_dragon_slave_lua:OnProjectileHit( hTarget, vLocation )
 		
 		local nFXIndex = ParticleManager:CreateParticle( "particles/units/heroes/hero_lina/lina_spell_dragon_slave_impact.vpcf", PATTACH_ABSORIGIN_FOLLOW, hTarget )
 		ParticleManager:SetParticleControlForward( nFXIndex, 1, vDirection )
-		ParticleManager:ReleaseParticleIndex( nFXIndex )		
+		ParticleManager:ReleaseParticleIndex( nFXIndex )
 	end
 
 

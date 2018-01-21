@@ -18,7 +18,7 @@ coords = {
 	{2442, 1701}
 }
 
-function addTree()
+function spawnOrb()
 	rand = math.random(1, 17)
 	print(coords[rand][1])
 	print(coords[rand][2])

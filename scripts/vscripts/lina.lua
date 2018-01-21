@@ -11,5 +11,5 @@ function ZeroManaOnSpawn( event )
 
  function ChargeOrbPickup( event )
     local hero = event.caster
-    hero:GiveMana(hero:GetMaxMana()/5)
+    hero:GiveMana(20)
  end
