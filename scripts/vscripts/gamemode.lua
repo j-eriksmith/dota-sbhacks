@@ -140,6 +140,7 @@ require ( "add_trees" )
 require ( "process_chat" )
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
+  CreateTempTree(Vector(coords[rand][1], coords[rand][2]), 100000)
   SendToConsole("dota_creeps_no_spawning 1")    
   
   Timers:CreateTimer(5, -- Start this timer 30 game-time seconds later
