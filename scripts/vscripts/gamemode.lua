@@ -132,7 +132,6 @@ end
 require ( "add_trees" )
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
-  CreateTempTree(Vector(coords[rand][1], coords[rand][2], 0), 100000)
   SendToConsole("dota_creeps_no_spawning 1")    
   Notifications:Bottom(PlayerResource:GetPlayer(0), {text="I accommodated the embarrassing pharaoh", duration=10, style={color="red", ["font-size"]="80px"}})
   

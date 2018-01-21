@@ -1099,28 +1099,27 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_NONE"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BUILDING"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"							// Changes dynamically with scepter	
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"FightRecapLevel"				"2"
-		"BaseClass"					"ability_lua"
-		"AbilityTextureName"				"lina_laguna_blade_lua"
+		"BaseClass"						"ability_lua"
+		"AbilityTextureName"			"lina_laguna_blade_lua"
 		"ScriptFile"					"lina_laguna_blade_lua"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"600"
+		"AbilityCastRange"				"200"
 		"AbilityCastPoint"				"0.45 0.45 0.45"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"70.0 60.0 50.0"
+		"AbilityCooldown"				"1.0"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"280 420 680"
+		"AbilityManaCost"				"100"
 			
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -1131,16 +1130,6 @@
 		"AbilitySpecial"
 		{
 			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage"					"450 675 950"
-			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"cast_range_scepter"		"600"
-			}
-			"03"
 			{
 				"var_type"					"FIELD_FLOAT"
 				"damage_delay"				"0.25"
