@@ -865,6 +865,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
+		"MaxLevel"						"1"
 		"BaseClass"						"ability_lua"
 		"AbilityTextureName"			"lina_dragon_slave_lua"
 		"ScriptFile"					"lina_dragon_slave_lua"
@@ -872,12 +873,12 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"800"
-		"AbilityCastPoint"				"0.45 0.45 0.45 0.45"
+		"AbilityCastPoint"				"0.45"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"2.0"
-		"AbilityDuration"				"0.6875 0.6875 0.6875 0.6875"
+		"AbilityDuration"				"0.6875"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
@@ -912,80 +913,48 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"dragon_slave_damage"			"1100 1800 2500 3200"
+				"dragon_slave_damage"			"1"
 			}
 		}
 	}
 	
 	//=================================================================================================================
-	// Ability: Lina Dragon Slave (disabled) Lua
+	// Ability: Lina Tree Trap Lua
 	//=================================================================================================================
-	"lina_dragon_slave_disabled_lua"
+	"lina_tree_trap_lua"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
-		"MaxLevel"               		"0"
+		"MaxLevel"               		"3"
 		"BaseClass"						"ability_lua"
-		"AbilityTextureName"			"lina_dragon_slave_lua"
-		"ScriptFile"					"lina_dragon_slave_lua"
+		"AbilityTextureName"			"lina_light_strike_array_lua"
+		"ScriptFile"					"lina_tree_trap_lua"
 		
 		"Modifiers"
 		{ 
-			//"IsHidden"  "1" //Hide in the UI
+			//"IsHidden"  "0" //Hide in the UI
 		}
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"800"
-		"AbilityCastPoint"				"0.45 0.45 0.45 0.45"
+		"AbilityCastRange"				"600 650 700"
+		"AbilityCastPoint"				"0.20"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"2.0"
-		"AbilityDuration"				"0.6875 0.6875 0.6875 0.6875"
+		"AbilityCooldown"				"6"
+		"AbilityDuration"				"1 1.25 1.5"
 
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
+		"AbilityManaCost"				"5"
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"dragon_slave_speed"		"1200"
-			}
-			
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"dragon_slave_width_initial"	"275"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"dragon_slave_width_end"		"200"
-			}
-			
-			"04"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"dragon_slave_distance"			"1075"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"dragon_slave_damage"			"110 180 250 320"
-			}
-		}
 	}
 	
 	//=================================================================================================================
@@ -1058,8 +1027,8 @@
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityDuration"				"2.5 3 3"
-		"AbilityCooldown"				"15 14 13"
+		"AbilityDuration"				"2 2.5 2.5"
+		"AbilityCooldown"				"13 12 11"
 		"AbilityManaCost"				"0 0 0"
 		"MaxLevel"						"3"
 		
@@ -1075,7 +1044,7 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"fiery_soul_move_speed_bonus"	"40 45 50"
+				"fiery_soul_move_speed_bonus"	"30 35 42"
 			}
 			"03"
 			{
@@ -1085,7 +1054,7 @@
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"duration_tooltip"			"3"
+				"duration_tooltip"			"2 2.5 2.5"
 			}
 		}
 	}
