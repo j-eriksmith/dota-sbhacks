@@ -912,7 +912,7 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"dragon_slave_damage"			"110 180 250 320"
+				"dragon_slave_damage"			"1100 1800 2500 3200"
 			}
 		}
 	}
