@@ -35,5 +35,8 @@ function lina_laguna_blade_lua:OnSpellStart()
 	end
 end
 
+function lina_laguna_blade_lua:OnChannelFinish(bInterrupted)
+	check("")
+end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------

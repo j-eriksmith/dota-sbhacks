@@ -17,42 +17,38 @@ end
 
 
 function ChatListened (eventInfo)
-	print("ChatListened")
-	input = eventInfo.text
-	listening = false;
-	check(phrase)
-end
-
-function channelFinished() 
-	print("herp derp")	
 	if listening then
-		clear()		
-		Notifications:Bottom(PlayerResource:GetPlayer(0), {text=incorrect, duration=3, style={color="white", ["font-size"]="80px"}})
+		if eventInfo.playerid == ritual_caster:GetPlayerOwnerID() then
+			print("ChatListened")
+			input = eventInfo.text
+			check(phrase)
+		end
 	end
 end
 
-
-function test(caster)
-	ritual_caster = caster
+function test(hCaster)
+	clear()
+	ritual_caster = hCaster
+	listening = true
 	print("test")
 	rand = math.random(1, 5)
 	phrase = challenges[rand]
 	print(phrase)
-	Notifications:Top(PlayerResource:GetPlayer(0), {text=prompt, duration=10, style={color="white", ["font-size"]="50px"}})
-	Notifications:Bottom(PlayerResource:GetPlayer(0), {text=phrase, duration=10, style={color="white", ["font-size"]="80px"}})
-	listening = true;
+	Notifications:Top(hCaster:GetPlayerOwner(), {text=prompt, duration=10, style={color="white", ["font-size"]="50px"}})
+	Notifications:Bottom(hCaster:GetPlayerOwner(), {text=phrase, duration=10, style={color="white", ["font-size"]="80px"}})
 	ListenToGameEvent("player_chat", ChatListened, nil)
 end
 
 function check(correct_str)
 	print("check")
+	listening = false
 	if input == correct_str then
 		clear()
-		Notifications:Bottom(PlayerResource:GetPlayer(0), {text=correct, duration=3, style={color="white", ["font-size"]="80px"}})
-		ritual_caster.Interrupt()
+		Notifications:Bottom(ritual_caster:GetPlayerOwner(), {text=correct, duration=3, style={color="white", ["font-size"]="80px"}})
+		ritual_caster:Interrupt()
 		--and whatever else needs to happen for scorekeeping
 	else
 		clear()
-		Notifications:Bottom(PlayerResource:GetPlayer(0), {text=incorrect, duration=3, style={color="white", ["font-size"]="80px"}})
+		Notifications:Bottom(ritual_caster:GetPlayerOwner(), {text=incorrect, duration=3, style={color="white", ["font-size"]="80px"}})
 	end
 end
