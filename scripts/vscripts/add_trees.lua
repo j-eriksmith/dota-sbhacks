@@ -28,4 +28,3 @@ function addTree()
 	local pos_launch = pos+RandomVector(RandomFloat(150,200))
 	item:LaunchLoot(true, 200, 0.75, pos_launch)
 end
-
