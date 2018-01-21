@@ -1,6 +1,7 @@
 function ChatListened (eventInfo)
      input = eventInfo.text
      check("I accommodated the embarrassing pharaoh at the cemetery where his conscientious pterodactyl forever lay")
+     cmd()
 end
 
 --this function to test if input is globally accessible
@@ -14,5 +15,11 @@ function check(correct_str)
 		print("good job!")
 	else
 		print("your input did not match!")
+	end
+end
+
+function cmd()
+	if input == "trap on mouse" then
+		trap()
 	end
 end

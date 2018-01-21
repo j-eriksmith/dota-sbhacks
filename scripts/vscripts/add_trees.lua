@@ -25,7 +25,6 @@ function addTree()
 	vec = {}
 	vec[1] = coords[rand][1]
 	vec[2] = coords[rand][2]
-	print("tree added?")
-	CreateTempTree(Vector(coords[rand][1], coords[rand][2], 0), 100000)
+	--print("tree added?")
+	--CreateTempTree(Vector(coords[rand][1], coords[rand][2], 0), 100000)
 end
-
