@@ -99,13 +99,15 @@ end
 ]]
 function GameMode:OnHeroInGame(hero)
   DebugPrint("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
+  -- test(0)
 
   local heroName = hero:GetUnitName()
   if heroName == "npc_dota_hero_lina" then
       -- Add the spell
       hero:AddAbility("lina_charge")
       -- Level it up
-      hero:FindAbilityByName("lina_charge"):SetLevel(1)
+      hero:FindAbilityByName("lina_charge"):SetLevel(1)  
+
   end
   -- This line for example will set the starting gold of every hero to 500 unreliable gold
   --hero:SetGold(500, false)
@@ -129,16 +131,17 @@ end
 ]]
 
 require ( "add_trees" )
+require ( "process_chat" )
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
   CreateTempTree(Vector(coords[rand][1], coords[rand][2]), 100000)
   SendToConsole("dota_creeps_no_spawning 1")    
-
-  Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
+  
+  Timers:CreateTimer(15, -- Start this timer 30 game-time seconds later
     function()
       --DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
-      addTree();
-      return 2.0 -- Rerun this timer every 30 game-time seconds 
+      --addTree();
+      return 10.0 -- Rerun this timer every 30 game-time seconds 
     end)
 end
 

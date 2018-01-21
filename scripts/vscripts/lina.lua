@@ -8,3 +8,8 @@ function ZeroManaOnSpawn( event )
         hero:SetHealth(20000)
     end)
  end
+
+ function ChargeOrbPickup( event )
+    local hero = event.caster
+    hero:GiveMana(hero:GetMaxMana()/5)
+ end

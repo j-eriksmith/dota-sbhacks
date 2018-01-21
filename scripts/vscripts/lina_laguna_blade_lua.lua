@@ -19,16 +19,6 @@ end
 
 --------------------------------------------------------------------------------
 
-function lina_laguna_blade_lua:GetCastRange( vLocation, hTarget )
-	if self:GetCaster():HasScepter() then
-		return self:GetSpecialValueFor( "cast_range_scepter" )
-	end
-
-	return self.BaseClass.GetCastRange( self, vLocation, hTarget )
-end
-
---------------------------------------------------------------------------------
-
 function lina_laguna_blade_lua:OnSpellStart()
 	local hTarget = self:GetCursorTarget()
 	if hTarget ~= nil then

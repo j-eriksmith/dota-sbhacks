@@ -1,5 +1,6 @@
 require('internal/util')
 require('gamemode')
+require ('process_chat')
 
 function Precache( context )
 --[[
@@ -42,7 +43,6 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_dota_hero_enigma", context)
 end
 
-require ( "process_chat" )
 
 -- Spawn runes 
 SendToConsole("")
@@ -52,8 +52,9 @@ function Activate()
 	print("[BAREBONES] Performing activate")
   GameRules.GameMode = GameMode()
   GameRules.GameMode:_InitGameMode()
-  ListenToGameEvent("player_chat", ChatListened, nil)
+  --ListenToGameEvent("player_chat", ChatListened, nil)
   --print("activate")
+  test(0)
 end
 
 --print("bottom")

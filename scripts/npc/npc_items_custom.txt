@@ -77,13 +77,13 @@
 			}
 		}
 	}
-	"item_vladmir_datadriven"
+	"item_charge_orb_datadriven"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"item_datadriven"
 		"ID"							"1081"  //Valve's version of this item uses the ID "81".
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"Model"							"models/props_gameplay/red_box.vmdl" 
 		"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
 		"AbilityTextureName"			"item_vladmir"
@@ -94,6 +94,11 @@
 		"ItemShopTags"					"lifesteal;damage;armor;regen_mana;regen_health"
 		"ItemQuality"					"rare"
 		"ItemAliases"					"vladmirs offering;vlads"
+		"ItemInitialCharges"       		"1" //Initial qty, since item is stackable
+		"ItemDisplayCharges"        	"0" //Hide the charges - # now indicates qty
+		"ItemRequiresCharges"       	"1" //The active ability needs charges
+		"ItemPermanent"             	"0" //Only 1 qty will vanish after use
+
 
 		"ItemKillable"					"1"
 		"ItemSellable"					"1"
@@ -101,60 +106,22 @@
 		"ItemDroppable"					"1"
 		"ItemShareability"				"ITEM_NOT_SHAREABLE"
 		"ItemStackable"					"0"
-		"ItemPermanent"					"0"
 		"ItemDisassembleRule"			"DOTA_ITEM_DISASSEMBLE_NEVER"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemAlertable"					"1"
+		"ItemCastOnPickup" 				"1"
 
 		"SideShop"						"0"
 		"SecretShop"					"0"
-		
-		"AbilitySpecial"
+
+		"OnSpellStart"
 		{
-			"01"
+			"RunScript"
 			{
-				"var_type"					"FIELD_INTEGER"
-				"aura_radius"				"900"
+				"ScriptFile" "lina.lua"
+				"Function" "ChargeOrbPickup"
 			}
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"lifesteal_aura_percent"	"16"
-			}
-			"03"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_aura_percent"		"15"
-			}
-			"04"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"armor_aura"				"5"
-			}
-			"05"
-			{
-				"var_type"					"FIELD_FLOAT"
-				"mana_regen_aura"			"25.5"
-			}
-			"06"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"hp_regen"					"2"
-			}
-		}
-		
-		"Modifiers"
-		{
-			"item_vladmir_datadriven_modifier"
-			{
-				"Passive"			"1"
-				"IsHidden"			"0"
-				
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"			"%mana_regen_aura"
-				}
-			}
+			"SpendCharge"           "1"  // Must be placed AFTER spell (SpawnUnit)
 		}
 	}
 }
