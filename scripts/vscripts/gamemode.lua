@@ -99,7 +99,7 @@ end
 ]]
 function GameMode:OnHeroInGame(hero)
   DebugPrint("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
-  test(0)
+  -- test(0)
 
   local heroName = hero:GetUnitName()
   if heroName == "npc_dota_hero_lina" then
