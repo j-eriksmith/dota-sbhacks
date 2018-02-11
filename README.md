@@ -1,4 +1,4 @@
-Spellbreakers - Dota 2 turned Action Spelling Game
+# Spellbreakers - Dota 2 turned Action Spelling Game
 
 Repo for Spellbreakers built during SBHacks IV 2018. Controls and info can be found at the Steam Workshop listing for the mod below.
 
